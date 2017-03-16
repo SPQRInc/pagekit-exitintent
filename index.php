@@ -55,18 +55,18 @@ return [
 	],
 	
 	'config' => [
-		'html'    => '',
-		'sensitivity'     => 20,
-		'aggressive' => false,
-		'timer' => 100,
-		'expires' => 10,
-		'cookiename' => 'exitintent',
-		'sitewide' => false
+		'html'        => '',
+		'sensitivity' => 20,
+		'aggressive'  => false,
+		'timer'       => 100,
+		'expires'     => 10,
+		'cookiename'  => 'exitintent',
+		'sitewide'    => false
 	],
 	
 	'events' => [
-		'boot' => function ($event, $app) {
-			$app->subscribe(new ExitintentHelper);
+		'boot' => function( $event, $app ) {
+			$app->subscribe( new ExitintentHelper );
 		},
 		
 		'site' => function( $event, $app ) {
@@ -77,21 +77,34 @@ return [
 					$module = App::module( 'exitintent' );
 					$config = $module->config;
 					
-					$sensitivity     = ( !empty( $config[ 'sensitivity' ] ) ? $config[ 'sensitivity' ] : 20 );
-					$aggressive     = ( !empty( $config[ 'aggressive' ] ) ? $config[ 'aggressive' ] : false );
-					$timer     = ( !empty( $config[ 'timer' ] ) ? $config[ 'timer' ] : 100 );
-					$expires = ( !empty( $config[ 'expires' ] ) ? $config[ 'expires' ] : 10 );
-					$cookiename = ( !empty( $config[ 'cookiename' ] ) ? $config[ 'cookiename' ] : 'exitintent' );
-					$sitewide = ( !empty( $config[ 'sitewide' ] ) ? $config[ 'sitewide' ] : false );
+					$options = [];
 					
-					$options = '';
-					if($sensitivity) $options .= "sensitivity: $sensitivity,";
-					if($aggressive) $options .= "aggressive: $aggressive,";
-					if($timer) $options .= "timer: $timer,";
-					if($expires) $options .= "cookieExpire: $expires,";
-					if($cookiename) $options .= "cookieName: '$cookiename',";
-					if($sitewide) $options .= "sitewide: $sitewide";
+					if ( $sensitivity =
+						( array_key_exists( 'sensitivity', $config ) ? $config[ 'sensitivity' ] : false )
+					) {
+						$options[] = "sensitivity: $sensitivity";
+					}
+					if ( $aggressive =
+						( array_key_exists( 'aggressive', $config ) ? $config[ 'aggressive' ] : false )
+					) {
+						$options[] = "aggressive: true";
+					}
+					if ( $timer = ( array_key_exists( 'timer', $config ) ? $config[ 'timer' ] : 100 ) ) {
+						$options[] = "timer: $timer";
+					}
+					if ( $expires = ( array_key_exists( 'expires', $config ) ? $config[ 'expires' ] : 10 ) ) {
+						$options[] = "cookieExpire: $expires";
+					}
+					if ( $cookiename =
+						( array_key_exists( 'cookiename', $config ) ? $config[ 'cookiename' ] : 'exitintent' )
+					) {
+						$options[] = "cookieName: '$cookiename'";
+					}
+					if ( $sitewide = ( array_key_exists( 'sitewide', $config ) ? $config[ 'sitewide' ] : false ) ) {
+						$options[] = "sitewide: $sitewide";
+					}
 					
+					$options = implode( ",", $options );
 					
 					$script = "ouibounce(document.getElementById('exit-modal'), { $options, callback: function() {		
 						var exitmodal = UIkit.modal('#exit-modal');
@@ -101,10 +114,11 @@ return [
 					
 					$app[ 'scripts' ]->add(
 						'ouibounce',
-						'exitintent:app/assets/ouibounce/build/ouibounce.min.js', ['jquery']
+						'exitintent:app/assets/ouibounce/build/ouibounce.min.js',
+						[ 'jquery' ]
 					);
 					
-					$app['scripts']->add('exitintent', $script, [], 'string');
+					$app[ 'scripts' ]->add( 'exitintent', $script, [], 'string' );
 					
 				}
 			);

@@ -5,5 +5,6 @@
 	'Timer'               => 'Timer',
 	'Cookie Lifetime'     => 'Cookie-Lebensdauer',
 	'Cookie Name'         => 'Cookie-Name',
-	'Sitewide Cookie'     => 'Cookie seitenweit'
+	'Sitewide Cookie'     => 'Cookie seitenweit',
+	'Days'                => 'Tage'
 ];
