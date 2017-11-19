@@ -1,7 +1,7 @@
 module.exports = [
     {
         entry: {
-            "settings": "./app/views/admin/settings.js"
+			"exitintent-settings": "./app/components/exitintent-settings.vue"
         },
         output: {
             filename: "./app/bundle/[name].js"

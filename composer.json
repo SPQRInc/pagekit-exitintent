@@ -1,7 +1,8 @@
 {
   "name": "spqr/exitintent",
+  "module": "spqr/exitintent",
   "type": "pagekit-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "title": "Exit Intent",
   "description": "Displays popover when a visitor attempts to exit the website",
   "license": "MIT",
