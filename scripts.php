@@ -33,7 +33,7 @@ return [
      *
      */
     'updates'   => [
-        '1.0.1' => function ($app) {
+        '1.0.2' => function ($app) {
             $app['config']->set('spqr/exitintent', $app->config('exitintent')->toArray());
             $app['config']->remove('exitintent');
         }
