@@ -13,10 +13,14 @@ class ExitintentHelper implements EventSubscriberInterface
         
         $module = App::module('spqr/exitintent');
         $config = $module->config;
-        
-        if ((!$config[ 'nodes' ] || in_array(App::request()->attributes->get('_node'), $config[ 'nodes' ]))) {
-            $html = (!empty($config[ 'html' ]) ? $config[ 'html' ] : '');
-            $event->addResult('<div id="exit-modal" class="uk-modal"><div class="uk-modal-dialog"><a href="" class="uk-modal-close uk-close"></a>' . $html . '</div></div>');
+    
+        if ((!$config['nodes']
+            || in_array(App::request()->attributes->get('_node'),
+                $config['nodes']))
+        ) {
+            $html = (!empty($config['html']) ? $config['html'] : '');
+            $event->addResult('<div id="exit-modal" class="uk-modal"><div class="uk-modal-dialog"><a href="" class="uk-modal-close uk-close"></a>'
+                .$html.'</div></div>');
         }
     }
     
@@ -26,7 +30,7 @@ class ExitintentHelper implements EventSubscriberInterface
     public function subscribe()
     {
         return [
-            'view.content' => ['onViewContent', 10]
+            'view.content' => ['onViewContent', 10],
         ];
     }
 }

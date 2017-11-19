@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\DBAL\Schema\Comparator;
+use Pagekit\Application as App;
 
 return [
     
