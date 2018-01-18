@@ -1,7 +1,0 @@
-{
-  "name": "exitintent",
-  "dependencies": {
-    "ouibounce": "*"
-  },
-  "private": true
-}
