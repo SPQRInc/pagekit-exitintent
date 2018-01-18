@@ -26,7 +26,7 @@ return [
     'uninstall' => function ($app) {
         
         // remove the config
-        $app[ 'config' ]->remove('spqr/exitintent');
+        $app['config']->remove('spqr/exitintent');
     },
     
     /*
@@ -35,9 +35,10 @@ return [
      */
     'updates'   => [
         '1.0.2' => function ($app) {
-            $app['config']->set('spqr/exitintent', $app->config('exitintent')->toArray());
+            $app['config']->set('spqr/exitintent',
+                $app->config('exitintent')->toArray());
             $app['config']->remove('exitintent');
-        }
+        },
     ],
 
 ];

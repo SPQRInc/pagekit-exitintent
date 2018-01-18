@@ -42,10 +42,9 @@ return [
     ],
     
     'events' => [
-        'boot' => function ($event, $app) {
+        'boot'         => function ($event, $app) {
             $app->subscribe(new ExitintentHelper);
         },
-    
         'site'         => function ($event, $app) {
             $app->on('view.content', function ($event, $test) use ($app) {
                 if ((!$this->config['nodes']
@@ -54,7 +53,7 @@ return [
                     $module  = App::module('spqr/exitintent');
                     $config  = $module->config;
                     $options = [];
-        
+    
                     if ($sensitivity = (array_key_exists('sensitivity', $config)
                         ? $config['sensitivity'] : false)
                     ) {
@@ -87,16 +86,16 @@ return [
                     }
                     
                     $options = implode(",", $options);
-        
+    
                     $script
                         = "ouibounce(document.getElementById('exit-modal'), { $options, callback: function() {
 						var exitmodal = UIkit.modal('#exit-modal');
 						exitmodal.show();
 						}
 					});";
-        
+    
                     $app['scripts']->add('spqr/ouibounce',
-                        'spqr/exitintent:app/assets/ouibounce/build/ouibounce.min.js',
+                        'spqr/exitintent:app/assets/ouibounce/ouibounce.min.js',
                         ['jquery']);
                     $app['scripts']->add('spqr/exitintent', $script, [],
                         'string');
