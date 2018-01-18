@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+- ADD: Replaced bower with npm/webpack
+- ADD: Bumped Ouibounce version
+- ADD: Added French translation (thanks to the great community!)
+
 ## 1.0.3
 - ADD: New settings modal in Pagekit's extensions-view
 - ADD: Ability to show exit intent modal only on specific nodes
