@@ -1,7 +1,7 @@
 <?php
 
 use Pagekit\Application as App;
-use Spqr\Exitintent\Helper\ExitintentHelper;
+use Spqr\Exitintent\Plugin\ExitintentPlugin;
 
 return [
     
@@ -43,7 +43,7 @@ return [
     
     'events' => [
         'boot'         => function ($event, $app) {
-            $app->subscribe(new ExitintentHelper);
+            $app->subscribe(new ExitintentPlugin);
         },
         'site'         => function ($event, $app) {
             $app->on('view.content', function ($event, $test) use ($app) {

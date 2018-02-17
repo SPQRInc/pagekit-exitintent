@@ -1,19 +1,19 @@
 <?php
 
-namespace Spqr\Exitintent\Helper;
+namespace Spqr\Exitintent\Plugin;
 
 use Pagekit\Application as App;
 use Pagekit\View\Event\ViewEvent;
 use Pagekit\Event\EventSubscriberInterface;
 
-class ExitintentHelper implements EventSubscriberInterface
+class ExitintentPlugin implements EventSubscriberInterface
 {
     public function onViewContent(ViewEvent $event)
     {
         
         $module = App::module('spqr/exitintent');
         $config = $module->config;
-    
+        
         if ((!$config['nodes']
             || in_array(App::request()->attributes->get('_node'),
                 $config['nodes']))
