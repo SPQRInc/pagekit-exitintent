@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+- FIX: Renamed Helper to Plugin
+- ADD: Added Info-Tab to the settings
+
 ## 1.0.4
 - ADD: Replaced bower with npm/webpack
 - ADD: Bumped Ouibounce version
