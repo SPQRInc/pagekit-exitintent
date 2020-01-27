@@ -3,6 +3,8 @@
 ## General
 This extension allows you to show a popup if the visitor wants to exit the page.
 
+**This project will no longer be maintained.**
+
 ## Installation
 Please install this extension via Pagekit's marketplace
 
